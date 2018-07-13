@@ -1,21 +1,13 @@
 # vapt_zup
 
-## Project setup
+Run:
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
+npm i
+npm start
 ```
 
-### Compiles and minifies for production
+.. Or (for extra fancyness):
 ```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
+npm i
+npm full
 ```
