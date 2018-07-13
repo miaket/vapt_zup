@@ -1,2 +1,13 @@
 # vapt_zup
-jul18
+
+Run:
+```
+npm i
+npm start
+```
+
+.. Or (for extra fancyness):
+```
+npm i
+npm full
+```
