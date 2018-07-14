@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "vue": "^2.5.16",
+    "vue-axios": "^2.1.2",
     "vuetify": "^1.0.19"
   },
   "devDependencies": {
