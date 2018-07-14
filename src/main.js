@@ -6,6 +6,8 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
 
 Vue.use(VueAxios, axios)
 Vue.use(Vuex)
