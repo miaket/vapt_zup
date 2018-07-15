@@ -13,9 +13,9 @@ Vue.use(Vuex)
 Vue.use(VueRouter)
 Vue.use(Vuetify, {
   theme: {
-    primary: '#691b99',
-    primaryl: '#9b4dcb',
-    primaryd: '#37006a',
+    primary: '#6a1b9a',
+    primaryl: '#9c4dcc',
+    primaryd: '#38006b',
     secondary: '#fdd835',
     secondaryl: '#ffff6b',
     secondaryd: '#c6a700',
