@@ -2,17 +2,16 @@
   <v-container fluid>
     <v-data-table
       :headers="headers"
-      :items="desserts"
+      :items="products"
       hide-actions
       class="elevation-1"
     >
       <template slot="items" slot-scope="props">
         <td>{{ props.item.name }}</td>
-        <td class="text-xs-right">{{ props.item.calories }}</td>
-        <td class="text-xs-right">{{ props.item.fat }}</td>
-        <td class="text-xs-right">{{ props.item.carbs }}</td>
-        <td class="text-xs-right">{{ props.item.protein }}</td>
-        <td class="text-xs-right">{{ props.item.iron }}</td>
+        <td class="text-xs-right">{{ props.item.type }}</td>
+        <td class="text-xs-right">{{ props.item.price }}</td>
+        <td>{{ props.item.rating }}</td>
+        <td>{{ props.item.availability }}</td>
       </template>
     </v-data-table>
   </v-container>
@@ -22,19 +21,10 @@
   export default {
     data(){
       return{
-        headers,
+        headers: this.$store.getters.headers,
+        products: this.$store.getters.products
       }
-    },
-    mounted() {
-      console.log('mouting?')
-      let filter = this.$store.getters.headers;
-      this.headers = filter.headers;   
-    },
-    // computed: {
-    //   getUsername () {
-    //     return this.$store.getters.getUser.name
-    //   },
-    // }
+    }
   }
 </script>
 
