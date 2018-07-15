@@ -2,31 +2,26 @@
   <v-app>
     <toolbar/>
     <v-content>
-      <hello-world/>
+      <filter-app/>
     </v-content>
-    <v-footer :fixed="fixed" app>
-      <span>&copy; 2017</span>
+    <v-footer>
+      <span>2018</span>
     </v-footer>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import FilterApp from './components/FilterApp'
 import Toolbar from './components/Toolbar.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    FilterApp,
     Toolbar
   },
   data () {
     return {
-      items: [{
-        icon: 'bubble_chart',
-        title: 'Inspire'
-      }],
-      right: true,
     }
   }
 }
