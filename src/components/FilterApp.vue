@@ -8,8 +8,8 @@
     >
       <template slot="items" slot-scope="props">
         <td>{{ props.item.name }}</td>
-        <td class="text-xs-right">{{ props.item.type }}</td>
-        <td class="text-xs-right">{{ props.item.price }}</td>
+        <td>{{ props.item.type }}</td>
+        <td>{{ props.item.price }}</td>
         <td>{{ props.item.rating }}</td>
         <td>{{ props.item.availability }}</td>
       </template>
