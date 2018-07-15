@@ -22,7 +22,7 @@
     data(){
       return{
         headers: this.$store.getters.headers,
-        products: this.$store.getters.products
+        products: this.$store.getters.filteredProducts
       }
     }
   }
