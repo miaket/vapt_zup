@@ -8,27 +8,60 @@ export const store = new Vuex.Store({
       id: 0,
       name: '',
     },
-    headers: [
-      {
-        text: 'Dessert (100g serving)',
-        align: 'left',
-        sortable: false,
-        value: 'name'
-      },
-      { text: 'Calories', value: 'calories' },
-      { text: 'Fat (g)', value: 'fat' },
-      { text: 'Carbs (g)', value: 'carbs' },
-      { text: 'Protein (g)', value: 'protein' },
-      { text: 'Iron (%)', value: 'iron' }
-    ],
+    ProductListing:{
+      headers: [
+        { 
+          text: 'Product name',
+          align: 'left',
+          value: 'name'
+        },
+        { 
+          text: 'Type',
+          align: 'left',
+          value: 'type'
+        },
+        { 
+          text: 'Price',
+          value: 'price'
+        },
+        { 
+          text: 'Rating',
+          value: 'rating'
+        },
+        { 
+          text: 'Availability',
+          align: 'left',
+          value: 'availability'}
+      ],
+      products:[
+        {
+          name: 'Living World Deluxe Habitat, Large',
+          type: 'Cages',
+          price: 50.00,
+          rating: 4.5,
+          availability: 'Out of Stock'
+        },
+        {
+          name: 'Prevue Pet Products 528 Universal Small Animal Home, Dark Gray',
+          type: 'Cages',
+          price: 66.99,
+          rating: 4.9,
+          availability: 'In Stock'
+        }
+      ]
+    }
   },
   getters: {
-    getUser: state => {
+    user: state => {
       return state.user;
     },
-    getHeaders: state =>{
-      console.log (state.headers)
-      return state.headers;
+    headers: state =>{
+      console.log (state.ProductListing.headers)
+      return state.ProductListing.headers;
+    },
+    products: state =>{
+      console.log (state.ProductListing.products)
+      return state.ProductListing.products;
     }
   },
   mutations: {
