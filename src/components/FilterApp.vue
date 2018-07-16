@@ -22,7 +22,11 @@
       </v-btn>
     </v-layout>
     <filter-input v-if="filter" />
-    {{updateProductsType}} - {{updateProductsCategory}} - {{updateProductsAvailability}}
+    
+    <v-chip v-if="updateProductsType">{{updateProductsType}}</v-chip> 
+    <v-chip v-if="updateProductsCategory">{{updateProductsCategory}}</v-chip>
+    <v-chip v-if="updateProductsAvailability">{{updateProductsAvailability}}</v-chip>
+    
     <v-data-table
       :headers="headers"
       :items="searchedProducts"
@@ -107,15 +111,10 @@ import FilterInput from './Shared/FilterInput.vue'
         return this.$store.getters.applyFilterCategory;
       },
       updateProductsAvailability() {
-        console.log('updating avail:' + this.$store.getters.applyFilterAvailability)
         this.applyFilterAvailability = this.$store.getters.applyFilterAvailability;
         return this.$store.getters.applyFilterAvailability;
-      },
+      }
     },
-    // mounted() {
-    //   console.log(this.$store.getters.filteredProducts)
-    //   this.products = this.$store.getters.filteredProducts
-    // }
   }
 </script>
 
