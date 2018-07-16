@@ -73,7 +73,6 @@ import axios from 'axios'
           return !this.applyFilterCategory || (item.category == this.applyFilterCategory);
         })
         auxlist = auxlist.filter(item => {
-          console.log(item.availability + ' vs ' + this.applyFilterAvailability)
           return !this.applyFilterAvailability || (item.availability == this.applyFilterAvailability);
         })
         this.filteredProducts = auxlist
@@ -88,11 +87,10 @@ import axios from 'axios'
       searchedProducts: function () {
         let searchList;
         //to-do fix this weird call
-        console.log(this.filterList(this.products))
+        this.filterList(this.products)
         searchList = this.filteredProducts.filter(item => {
           return item.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1
         })
-        console.log(searchList)
         return searchList;
       },
       updateProductsType() {

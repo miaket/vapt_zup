@@ -34,10 +34,7 @@
           if (key){
             let objname = filterFields[key].name;
             let filterid = this.filter.filterid[key];
-            console.log(objname)
-            console.log(filterid)
             let payload = filterid
-            console.log(payload)
             if (key == 0) this.$store.dispatch('changeFilterType', payload);
             if (key == 1) this.$store.dispatch('changeFilterCategory', payload);
             if (key == 2) this.$store.dispatch('changeFilterAvailability', payload);

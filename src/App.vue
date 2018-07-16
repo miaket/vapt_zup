@@ -100,8 +100,6 @@ export default {
     let auxresponse
     axios.get('/productlist')
       .then(response => {
-        console.log('respds')
-        console.log(response.data.productListing);
         this.$store.dispatch('changeProductListing', response.data.productListing)
       });
     }
