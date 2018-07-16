@@ -1,5 +1,15 @@
 <template>
   <v-container fluid>
+    <v-flex sm8>
+      <v-text-field
+        label="Search"
+        placeholder="Search"
+        v-model="filter"
+        solo
+        append-icon='search'
+      >
+      </v-text-field>
+    </v-flex>
     <v-data-table
       :headers="headers"
       :items="products"
@@ -22,7 +32,8 @@
     data(){
       return{
         headers: this.$store.getters.headers,
-        products: this.$store.getters.filteredProducts
+        products: this.$store.getters.filteredProducts,
+        filter:''
       }
     }
   }
