@@ -22,7 +22,7 @@
       </v-btn>
     </v-layout>
     <filter-input v-if="filter" />
-    {{updateProductsType}}
+    {{updateProductsType}} - {{updateProductsCategory}} - {{updateProductsAvailability}}
     <v-data-table
       :headers="headers"
       :items="searchedProducts"
@@ -52,25 +52,46 @@ import FilterInput from './Shared/FilterInput.vue'
         products: this.$store.getters.filteredProducts,
         filteredProducts: this.products,
         search: '',
-        type: '',
-        category: '',
-        availability: '',
         applyFilterType: '',
+        applyFilterCategory: '',
+        applyFilterAvailability: '',
         filter: false
       }
     },
     methods:{
-      filterByType(searchList){
-        searchList = this.products.filter(item => {
+      filterList(searchList){
+        let auxlist = this.products
+        auxlist = auxlist.filter(item => {
           return !this.applyFilterType || (item.type == this.applyFilterType);
         })
-        this.filteredProducts = searchList
+        auxlist = auxlist.filter(item => {
+          return !this.applyFilterCategory || (item.category == this.applyFilterCategory);
+        })
+        auxlist = auxlist.filter(item => {
+          console.log(item.availability + ' vs ' + this.applyFilterAvailability)
+          return !this.applyFilterAvailability || (item.availability == this.applyFilterAvailability);
+        })
+        this.filteredProducts = auxlist
+        //(item.category == this.applyFilterCategory)
       }
+      // filterList(searchList){
+      //   searchList = this.filteredProducts.filter(item => {
+      //     return !this.applyFilterCategory || (item.category == this.applyFilterCategory);
+      //   })
+      //   this.filteredProducts = searchList
+      // },
+      // filterList(searchList){
+      //   searchList = this.products.filter(item => {
+      //     return !this.applyFilterAvailability || (item.availability == this.applyFilterAvailability);
+      //   })
+      //   this.filteredProducts = searchList
+      // }
     },
     computed: {
       searchedProducts: function () {
         let searchList;
-        console.log(this.filterByType(this.products))
+        //to-do fix this weird call
+        console.log(this.filterList(this.products))
         searchList = this.filteredProducts.filter(item => {
           return item.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1
         })
@@ -79,9 +100,17 @@ import FilterInput from './Shared/FilterInput.vue'
       },
       updateProductsType() {
         this.applyFilterType = this.$store.getters.applyFilterType;
-        // console.log(this.$store.getters.applyFilterType)
         return this.$store.getters.applyFilterType;
-      }
+      },
+      updateProductsCategory() {
+        this.applyFilterCategory = this.$store.getters.applyFilterCategory;
+        return this.$store.getters.applyFilterCategory;
+      },
+      updateProductsAvailability() {
+        console.log('updating avail:' + this.$store.getters.applyFilterAvailability)
+        this.applyFilterAvailability = this.$store.getters.applyFilterAvailability;
+        return this.$store.getters.applyFilterAvailability;
+      },
     },
     // mounted() {
     //   console.log(this.$store.getters.filteredProducts)
