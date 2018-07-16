@@ -22,6 +22,7 @@
       </v-btn>
     </v-layout>
     <filter-input v-if="filter" />
+    {{updateProductsType}}
     <v-data-table
       :headers="headers"
       :items="searchedProducts"
@@ -49,28 +50,43 @@ import FilterInput from './Shared/FilterInput.vue'
       return{
         headers: this.$store.getters.headers,
         products: this.$store.getters.filteredProducts,
-        search:'',
-        filter:false
+        filteredProducts: this.products,
+        search: '',
+        type: '',
+        category: '',
+        availability: '',
+        applyFilterType: '',
+        filter: false
       }
     },
-    methods: {
-      customFilter(items, search, filter) {
-        search = search.toString().toLowerCase()
-        return items.filter(row => filter(row["type"], search));
+    methods:{
+      filterByType(searchList){
+        searchList = this.products.filter(item => {
+          return !this.applyFilterType || (item.type == this.applyFilterType);
+        })
+        this.filteredProducts = searchList
       }
     },
     computed: {
       searchedProducts: function () {
-        return this.products.filter(item => {
+        let searchList;
+        console.log(this.filterByType(this.products))
+        searchList = this.filteredProducts.filter(item => {
           return item.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1
         })
+        console.log(searchList)
+        return searchList;
       },
-      filteredItems() {
-        return this.food.filter((i) => {
-          return !this.foodType || (i.type === this.foodType);
-        })
+      updateProductsType() {
+        this.applyFilterType = this.$store.getters.applyFilterType;
+        // console.log(this.$store.getters.applyFilterType)
+        return this.$store.getters.applyFilterType;
       }
-    }
+    },
+    // mounted() {
+    //   console.log(this.$store.getters.filteredProducts)
+    //   this.products = this.$store.getters.filteredProducts
+    // }
   }
 </script>
 
