@@ -1,5 +1,6 @@
 <template>
   <v-container fluid>
+    <v-layout justify-end>
     <v-flex sm8>
       <v-text-field
         label="Search"
@@ -10,6 +11,13 @@
       >
       </v-text-field>
     </v-flex>
+    </v-layout>
+    <v-layout justify-end>
+      <v-btn  @click="filter = !filter" flat color="blue lighten-2">
+        Filter <v-icon left>filter_list</v-icon>
+      </v-btn>
+    </v-layout>
+    <filter-input v-if="filter" />
     <v-data-table
       :headers="headers"
       :items="filteredProducts"
@@ -28,12 +36,17 @@
 </template>
 
 <script>
+import FilterInput from './Shared/FilterInput.vue'
   export default {
+    components:{
+      FilterInput,
+    },
     data(){
       return{
         headers: this.$store.getters.headers,
         products: this.$store.getters.filteredProducts,
-        search:''
+        search:'',
+        filter:false
       }
     },
     computed: {
