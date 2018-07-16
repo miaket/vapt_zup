@@ -66,7 +66,7 @@ export default {
             name: 'Living World Deluxe Habitat, Large',
             category: 'Small animals',
             type: 'Cages',
-            price: 50.00,
+            price: 50.10,
             rating: 4.5,
             availability: 'Out of Stock'
           },
@@ -87,13 +87,30 @@ export default {
             availability: 'In Stock'
           },
           {
-            name: 'Purina Fancy Feasts Grilled Seafood Collection ',
+            name: 'Purina Fancy Feasts Grilled Seafood Collection',
             category: 'Cats',
             type: 'Foods',
             price: 12.59,
             rating: 4.4,
             availability: 'In Stock'
           },
+          {
+            name: 'Purina Fancy Feast Tender Chicken Feast Wet',
+            category: 'Cats',
+            type: 'Foods',
+            price: 16.99,
+            rating: 3,
+            availability: 'Out of Stock'
+          },
+          {
+            name: 'PETAG PRODUCTS KMR - Kitten Milk Replacer',
+            category: 'Cats',
+            type: 'Foods',
+            price: 25.70,
+            rating: 4.6,
+            availability: 'In Stock'
+          },
+          
         ]
       }
     });
