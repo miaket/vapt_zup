@@ -8,7 +8,14 @@ export const store = new Vuex.Store({
       id: 0,
       name: '',
     },
-    ProductListing:{
+    filter:{
+      fields:[
+        'type',
+        'price',
+        'availability'
+      ],
+    },
+    productListing:{
       headers: [
         { 
           text: 'Product name',
@@ -33,9 +40,6 @@ export const store = new Vuex.Store({
           align: 'left',
           value: 'availability'}
       ],
-      filters:
-        'Cages',
-
       products:[
         {
           name: 'Living World Deluxe Habitat, Large',
@@ -50,6 +54,13 @@ export const store = new Vuex.Store({
           price: 66.99,
           rating: 4.9,
           availability: 'In Stock'
+        },
+        {
+          name: 'Kaytee Timothy Complete Diet for Rabbit',
+          type: 'Food',
+          price: 11.49,
+          rating: 4.7,
+          availability: 'In Stock'
         }
       ]
     }
@@ -59,18 +70,21 @@ export const store = new Vuex.Store({
       return state.user;
     },
     headers: state => {
-      console.log (state.ProductListing.headers)
-      return state.ProductListing.headers;
+      console.log (state.productListing.headers)
+      return state.productListing.headers;
+    },
+    filterFields: state => {
+      return state.filter.fields;
     },
     filters: state => {
-      return state.ProductListing.filters;
+      return state.productListing.filters;
     },
     filteredProducts: state => {
-      let filters = state.ProductListing.filters;
+      let filters = state.productListing.filters;
       console.log('filters')
       console.log(filters)
       let filteredProducts = [];
-      let products = state.ProductListing.products;
+      let products = state.productListing.products;
       console.log('prods')
       console.log(products)
 
@@ -94,8 +108,8 @@ export const store = new Vuex.Store({
           if (obj.hasOwnProperty(prop)) {
             console.log('nd')
             console.log(console.log(Object.values(obj)))
-            let regex = / + state.ProductListing.filters + /i;
-            // console.log(state.ProductListing.filters)
+            let regex = / + state.productListing.filters + /i;
+            // console.log(state.productListing.filters)
             console.log(regex)
             if(regex.test(prop)){
               filteredProducts.push(obj[prop])

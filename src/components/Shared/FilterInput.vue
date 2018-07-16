@@ -1,13 +1,17 @@
 <template>
-<v-container grid-list-md text-xs-center>
-  <v-layout row wrap>
-    <v-flex sm3  v-for="(header, index) in headers" :key=index>
-        {{header.value}}
-      <v-text-field>
-      </v-text-field>
-    </v-flex>
-  
-  </v-layout>
+  <v-container grid-list-md>
+    <v-layout 
+      row
+      wrap>
+      <v-flex 
+        sm3
+        v-for="(field, index) in fields"
+        :key=index>
+        {{ field }}
+        <v-text-field>
+        </v-text-field>
+      </v-flex>
+    </v-layout>
   </v-container>
 </template>
 
@@ -15,7 +19,7 @@
   export default {
     data(){
       return{
-        headers: this.$store.getters.headers,
+        fields: this.$store.getters.filterFields,
         products: this.$store.getters.filteredProducts,
         search:'',
         filter:false
