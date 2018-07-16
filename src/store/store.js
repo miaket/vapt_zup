@@ -30,70 +30,8 @@ export const store = new Vuex.Store({
       }
     },
     productListing:{
-      headers: [
-        { 
-          text: 'Product name',
-          align: 'left',
-          value: 'name'
-        },
-        {
-          text: 'Pet Category',
-          align: 'left',
-          value: 'category'
-        },
-        { 
-          text: 'Type',
-          align: 'left',
-          value: 'type'
-        },
-        { 
-          text: 'Price',
-          value: 'price'
-        },
-        { 
-          text: 'Rating',
-          value: 'rating'
-        },
-        { 
-          text: 'Availability',
-          align: 'left',
-          value: 'availability'
-        }
-      ],
-      products:[
-        {
-          name: 'Living World Deluxe Habitat, Large',
-          category: 'Small animals',
-          type: 'Cages',
-          price: 50.00,
-          rating: 4.5,
-          availability: 'Out of Stock'
-        },
-        {
-          name: 'Prevue Pet Products 528 Universal Small Animal Home, Dark Gray',
-          category: 'Small animals',
-          type: 'Cages',
-          price: 66.99,
-          rating: 4.9,
-          availability: 'In Stock'
-        },
-        {
-          name: 'Kaytee Timothy Complete Diet for Rabbit',
-          category: 'Small animals',
-          type: 'Foods',
-          price: 11.49,
-          rating: 4.7,
-          availability: 'In Stock'
-        },
-        {
-          name: 'Purina Fancy Feasts Grilled Seafood Collection ',
-          category: 'Cats',
-          type: 'Foods',
-          price: 12.59,
-          rating: 4.4,
-          availability: 'In Stock'
-        },
-      ]
+      headers: [],
+      products: []
     }
   },
   getters: {
@@ -149,6 +87,11 @@ export const store = new Vuex.Store({
       console.log('insidemut')
       state.filter.apply.availability = payload;
       console.log(state.filter.apply)
+    },
+    changeProductListing(state, payload) {
+      console.log('paylod')
+      console.log(payload)
+      state.productListing = payload;
     }
   },
   actions: {
@@ -166,6 +109,9 @@ export const store = new Vuex.Store({
     },
     changeFilterAvailability (context, payload) {
       context.commit('changeFilterAvailability',payload)
+    },
+    changeProductListing(context, payload) {
+      context.commit('changeProductListing', payload)
     }
   }
 });
