@@ -4,12 +4,14 @@
       row
       wrap>
       <v-flex 
-        sm3
         v-for="(field, index) in fields"
+        sm4
         :key=index>
-        {{ field }}
-        <v-text-field>
-        </v-text-field>
+        <v-select 
+          :label = field.name
+          :items = field.content
+          v-model = "filter.filterid[index]">
+        </v-select>
       </v-flex>
     </v-layout>
   </v-container>
@@ -20,9 +22,9 @@
     data(){
       return{
         fields: this.$store.getters.filterFields,
-        products: this.$store.getters.filteredProducts,
-        search:'',
-        filter:false
+        filter:{
+          filterid:[]
+        }
       }
     },
   }
