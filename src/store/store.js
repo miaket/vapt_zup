@@ -162,7 +162,7 @@ export const store = new Vuex.Store({
       context.commit('changeFilterType',payload)
     },
     changeFilterCategory (context, payload) {
-      context.commit('changeFilterType',payload)
+      context.commit('changeFilterCategory',payload)
     },
     changeFilterAvailability (context, payload) {
       context.commit('changeFilterAvailability',payload)
