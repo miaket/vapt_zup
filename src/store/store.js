@@ -10,9 +10,19 @@ export const store = new Vuex.Store({
     },
     filter:{
       fields:[
-        'type',
-        'price',
-        'availability'
+        {
+          name: 'type',
+          content: ['Cage', 'Food']
+        },
+        {
+          name: 'availability',
+          content: ['In Stock', 'Out of Stock']
+        },
+        {
+          name: 'category',
+          content: ['Cats', 'Small animals']
+        }
+        
       ],
     },
     productListing:{
@@ -21,6 +31,11 @@ export const store = new Vuex.Store({
           text: 'Product name',
           align: 'left',
           value: 'name'
+        },
+        {
+          text: 'Pet Category',
+          align: 'left',
+          value: 'category'
         },
         { 
           text: 'Type',
@@ -38,11 +53,13 @@ export const store = new Vuex.Store({
         { 
           text: 'Availability',
           align: 'left',
-          value: 'availability'}
+          value: 'availability'
+        }
       ],
       products:[
         {
           name: 'Living World Deluxe Habitat, Large',
+          category: 'Small animals',
           type: 'Cages',
           price: 50.00,
           rating: 4.5,
@@ -50,6 +67,7 @@ export const store = new Vuex.Store({
         },
         {
           name: 'Prevue Pet Products 528 Universal Small Animal Home, Dark Gray',
+          category: 'Small animals',
           type: 'Cages',
           price: 66.99,
           rating: 4.9,
@@ -57,11 +75,20 @@ export const store = new Vuex.Store({
         },
         {
           name: 'Kaytee Timothy Complete Diet for Rabbit',
+          category: 'Small animals',
           type: 'Food',
           price: 11.49,
           rating: 4.7,
           availability: 'In Stock'
-        }
+        },
+        {
+          name: 'Purina Fancy Feasts Grilled Seafood Collection ',
+          category: 'Cats',
+          type: 'Food',
+          price: 12.59,
+          rating: 4.4,
+          availability: 'In Stock'
+        },
       ]
     }
   },

@@ -29,6 +29,7 @@
       class="elevation-1">
       <template slot="items" slot-scope="props">
         <td>{{ props.item.name }}</td>
+        <td>{{ props.item.category }}</td>
         <td>{{ props.item.type }}</td>
         <td>{{ props.item.price }}</td>
         <td>{{ props.item.rating }}</td>
