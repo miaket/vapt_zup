@@ -26,7 +26,7 @@ export const store = new Vuex.Store({
       apply:{
         type: '',
         category: '',
-        name: ''
+        availability: ''
       }
     },
     productListing:{
@@ -137,17 +137,17 @@ export const store = new Vuex.Store({
     },
     changeFilterType(state, payload) {
       console.log('insidemut')
-      state.filter.apply.type = payload
+      state.filter.apply.type = payload;
       console.log(state.filter.apply)
     },
     changeFilterCategory(state, payload) {
       console.log('insidemut')
-      state.filter.apply.category = payload
+      state.filter.apply.category = payload;
       console.log(state.filter.apply)
     },
     changeFilterAvailability(state, payload) {
       console.log('insidemut')
-      state.filter.apply.availability = payload
+      state.filter.apply.availability = payload;
       console.log(state.filter.apply)
     }
   },
