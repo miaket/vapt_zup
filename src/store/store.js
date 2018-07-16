@@ -15,14 +15,13 @@ export const store = new Vuex.Store({
           content: ['Cage', 'Food']
         },
         {
-          name: 'availability',
-          content: ['In Stock', 'Out of Stock']
-        },
-        {
           name: 'category',
           content: ['Cats', 'Small animals']
+        },
+        {
+          name: 'availability',
+          content: ['In Stock', 'Out of Stock']
         }
-        
       ],
     },
     productListing:{
