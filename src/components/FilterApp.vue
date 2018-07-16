@@ -3,8 +3,8 @@
     <v-flex sm8>
       <v-text-field
         label="Search"
-        placeholder="Search"
-        v-model="filter"
+        placeholder="Search by name"
+        v-model="search"
         solo
         append-icon='search'
       >
@@ -12,7 +12,7 @@
     </v-flex>
     <v-data-table
       :headers="headers"
-      :items="products"
+      :items="filteredProducts"
       hide-actions
       class="elevation-1"
     >
@@ -33,7 +33,14 @@
       return{
         headers: this.$store.getters.headers,
         products: this.$store.getters.filteredProducts,
-        filter:''
+        search:''
+      }
+    },
+    computed: {
+      filteredProducts: function () {
+        return this.products.filter(item => {
+          return item.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1
+        })
       }
     }
   }
