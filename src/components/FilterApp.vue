@@ -7,23 +7,26 @@
         placeholder="Search by name"
         v-model="search"
         solo
-        append-icon='search'
-      >
-      </v-text-field>
+        append-icon='search' />
     </v-flex>
     </v-layout>
     <v-layout justify-end>
-      <v-btn  @click="filter = !filter" flat color="blue lighten-2">
-        Filter <v-icon left>filter_list</v-icon>
+      <v-btn 
+        @click="filter = !filter" 
+        flat
+        color="primaryl">
+        Filter
+        <v-icon left>
+          filter_list
+        </v-icon>
       </v-btn>
     </v-layout>
     <filter-input v-if="filter" />
     <v-data-table
       :headers="headers"
-      :items="filteredProducts"
+      :items="searchedProducts"
       hide-actions
-      class="elevation-1"
-    >
+      class="elevation-1">
       <template slot="items" slot-scope="props">
         <td>{{ props.item.name }}</td>
         <td>{{ props.item.type }}</td>
@@ -49,10 +52,21 @@ import FilterInput from './Shared/FilterInput.vue'
         filter:false
       }
     },
+    methods: {
+      customFilter(items, search, filter) {
+        search = search.toString().toLowerCase()
+        return items.filter(row => filter(row["type"], search));
+      }
+    },
     computed: {
-      filteredProducts: function () {
+      searchedProducts: function () {
         return this.products.filter(item => {
           return item.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1
+        })
+      },
+      filteredItems() {
+        return this.food.filter((i) => {
+          return !this.foodType || (i.type === this.foodType);
         })
       }
     }
