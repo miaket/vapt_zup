@@ -12,19 +12,21 @@ export const store = new Vuex.Store({
       fields:[
         {
           name: 'type',
-          content: ['Cage', 'Food']
+          content: ['Cages', 'Foods', '']
         },
         {
           name: 'category',
-          content: ['Cats', 'Small animals']
+          content: ['Cats', 'Small animals', '']
         },
         {
           name: 'availability',
-          content: ['In Stock', 'Out of Stock']
+          content: ['In Stock', 'Out of Stock', '']
         }
       ],
       apply:{
-
+        type: '',
+        category: '',
+        name: ''
       }
     },
     productListing:{
@@ -78,7 +80,7 @@ export const store = new Vuex.Store({
         {
           name: 'Kaytee Timothy Complete Diet for Rabbit',
           category: 'Small animals',
-          type: 'Food',
+          type: 'Foods',
           price: 11.49,
           rating: 4.7,
           availability: 'In Stock'
@@ -86,7 +88,7 @@ export const store = new Vuex.Store({
         {
           name: 'Purina Fancy Feasts Grilled Seafood Collection ',
           category: 'Cats',
-          type: 'Food',
+          type: 'Foods',
           price: 12.59,
           rating: 4.4,
           availability: 'In Stock'
@@ -99,7 +101,6 @@ export const store = new Vuex.Store({
       return state.user;
     },
     headers: state => {
-      console.log (state.productListing.headers)
       return state.productListing.headers;
     },
     filterFields: state => {
@@ -110,6 +111,11 @@ export const store = new Vuex.Store({
     },
     filteredProducts: state => {
       return state.productListing.products;
+    },
+    applyFilterType: state => {
+      console.log('filter type in store')
+      console.log(state.filter.apply.type)
+      return state.filter.apply.type;
     }
   },
   mutations: {
@@ -119,8 +125,10 @@ export const store = new Vuex.Store({
     changeUsername(state, payload) {
       state.user.name = payload.username
     },
-    changeFilterApply(state, payload) {
-      state.filter.apply = payload.filter.apply
+    changeFilterType(state, payload) {
+      console.log('insidemut')
+      state.filter.apply.type = payload
+      console.log(state.filter.apply)
     }
   },
   actions: {
@@ -130,8 +138,8 @@ export const store = new Vuex.Store({
     changeUsername (context, payload) {
       context.commit('changeUsername',payload)
     },
-    changeFilterApply (context, payload) {
-      context.commit('changeFilterApply',payload)
+    changeFilterType (context, payload) {
+      context.commit('changeFilterType',payload)
     }
   }
 });
