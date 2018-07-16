@@ -116,6 +116,16 @@ export const store = new Vuex.Store({
       console.log('filter type in store')
       console.log(state.filter.apply.type)
       return state.filter.apply.type;
+    },
+    applyFilterCategory: state => {
+      console.log('filter type in store')
+      console.log(state.filter.apply.category)
+      return state.filter.apply.category;
+    },
+    applyFilterAvailability: state => {
+      console.log('filter type in store')
+      console.log(state.filter.apply.availability)
+      return state.filter.apply.availability;
     }
   },
   mutations: {
@@ -129,6 +139,16 @@ export const store = new Vuex.Store({
       console.log('insidemut')
       state.filter.apply.type = payload
       console.log(state.filter.apply)
+    },
+    changeFilterCategory(state, payload) {
+      console.log('insidemut')
+      state.filter.apply.category = payload
+      console.log(state.filter.apply)
+    },
+    changeFilterAvailability(state, payload) {
+      console.log('insidemut')
+      state.filter.apply.availability = payload
+      console.log(state.filter.apply)
     }
   },
   actions: {
@@ -140,6 +160,12 @@ export const store = new Vuex.Store({
     },
     changeFilterType (context, payload) {
       context.commit('changeFilterType',payload)
+    },
+    changeFilterCategory (context, payload) {
+      context.commit('changeFilterType',payload)
+    },
+    changeFilterAvailability (context, payload) {
+      context.commit('changeFilterAvailability',payload)
     }
   }
 });
