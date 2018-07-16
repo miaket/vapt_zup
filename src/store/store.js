@@ -33,10 +33,9 @@ export const store = new Vuex.Store({
           align: 'left',
           value: 'availability'}
       ],
-      filters:{
-          rating: 4.9,
-          type: 'Cages'
-        },
+      filters:
+        'Cages',
+
       products:[
         {
           name: 'Living World Deluxe Habitat, Large',
@@ -70,21 +69,50 @@ export const store = new Vuex.Store({
       let filters = state.ProductListing.filters;
       console.log('filters')
       console.log(filters)
-      // let filteredProducts = [];
+      let filteredProducts = [];
       let products = state.ProductListing.products;
       console.log('prods')
       console.log(products)
-      // for (var key in filters) {
-      //   if (!filters.hasOwnProperty(key)) continue;
-      //   var obj = filters[key];
-      //   for (var prop in obj) {
-      //     if(!obj.hasOwnProperty(prop)) continue;
-      //     filteredProducts.push(obj[prop])
-      //   }
-      // }
+
+      console.log('double loop')
+      for (let key in products) {
+        if (!products.hasOwnProperty(key)) continue;
+        var obj = products[key];
+        console.log('ibj')
+        console.log(obj)
+        // console.log(key)
+
+      //   Object.keys(obj).forEach(function(key,index) {
+      //     console.log(obj)
+      //     console.log(Object.values(obj))
+      //     console.log(obj + key)
+      //     console.log(index)
+      //     // key: the name of the object key
+      //     // index: the ordinal position of the key within the object 
+      // });
+        for (var prop in obj) {
+          if (obj.hasOwnProperty(prop)) {
+            console.log('nd')
+            console.log(console.log(Object.values(obj)))
+            let regex = / + state.ProductListing.filters + /i;
+            // console.log(state.ProductListing.filters)
+            console.log(regex)
+            if(regex.test(prop)){
+              filteredProducts.push(obj[prop])
+    
+            }
+            // do stuff
+        }
+          // if(!obj.hasOwnProperty(prop)) continue;
+          // let propname = prop
+// console.log(obj[0].prop)
+        }
+
+      }
+
       console.log('filtered prod')
 
-      let filteredProducts = products.filter((e) => filters.includes(e.id));
+      
       console.log(filteredProducts);
       return products;
     }
