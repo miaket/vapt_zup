@@ -46,6 +46,7 @@
 
 <script>
 import FilterInput from './Shared/FilterInput.vue'
+import axios from 'axios'
   export default {
     components:{
       FilterInput,
@@ -76,20 +77,7 @@ import FilterInput from './Shared/FilterInput.vue'
           return !this.applyFilterAvailability || (item.availability == this.applyFilterAvailability);
         })
         this.filteredProducts = auxlist
-        //(item.category == this.applyFilterCategory)
       }
-      // filterList(searchList){
-      //   searchList = this.filteredProducts.filter(item => {
-      //     return !this.applyFilterCategory || (item.category == this.applyFilterCategory);
-      //   })
-      //   this.filteredProducts = searchList
-      // },
-      // filterList(searchList){
-      //   searchList = this.products.filter(item => {
-      //     return !this.applyFilterAvailability || (item.availability == this.applyFilterAvailability);
-      //   })
-      //   this.filteredProducts = searchList
-      // }
     },
     computed: {
       searchedProducts: function () {
@@ -115,6 +103,14 @@ import FilterInput from './Shared/FilterInput.vue'
         return this.$store.getters.applyFilterAvailability;
       }
     },
+    mounted () {
+      axios
+        .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+        .then(response => {
+          console.log(response)
+          this.info = response
+          });
+    }
   }
 </script>
 
