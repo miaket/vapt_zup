@@ -86,7 +86,6 @@ import axios from 'axios'
       },
       searchedProducts: function () {
         let searchList;
-        //to-do fix this weird call
         this.filterList(this.products)
         searchList = this.filteredProducts.filter(item => {
           return item.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1
