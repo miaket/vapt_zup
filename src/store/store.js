@@ -23,6 +23,9 @@ export const store = new Vuex.Store({
           content: ['In Stock', 'Out of Stock']
         }
       ],
+      apply:{
+
+      }
     },
     productListing:{
       headers: [
@@ -106,64 +109,19 @@ export const store = new Vuex.Store({
       return state.productListing.filters;
     },
     filteredProducts: state => {
-      let filters = state.productListing.filters;
-      console.log('filters')
-      console.log(filters)
-      let filteredProducts = [];
-      let products = state.productListing.products;
-      console.log('prods')
-      console.log(products)
-
-      console.log('double loop')
-      for (let key in products) {
-        if (!products.hasOwnProperty(key)) continue;
-        var obj = products[key];
-        console.log('ibj')
-        console.log(obj)
-        // console.log(key)
-
-      //   Object.keys(obj).forEach(function(key,index) {
-      //     console.log(obj)
-      //     console.log(Object.values(obj))
-      //     console.log(obj + key)
-      //     console.log(index)
-      //     // key: the name of the object key
-      //     // index: the ordinal position of the key within the object 
-      // });
-        for (var prop in obj) {
-          if (obj.hasOwnProperty(prop)) {
-            console.log('nd')
-            console.log(console.log(Object.values(obj)))
-            let regex = / + state.productListing.filters + /i;
-            // console.log(state.productListing.filters)
-            console.log(regex)
-            if(regex.test(prop)){
-              filteredProducts.push(obj[prop])
-    
-            }
-            // do stuff
-        }
-          // if(!obj.hasOwnProperty(prop)) continue;
-          // let propname = prop
-// console.log(obj[0].prop)
-        }
-
-      }
-
-      console.log('filtered prod')
-
-      
-      console.log(filteredProducts);
-      return products;
+      return state.productListing.products;
     }
   },
   mutations: {
-    changeUserid(state, payload){
+    changeUserid(state, payload) {
       state.user.id = payload.id
     },
-    changeUsername(state, payload){
+    changeUsername(state, payload) {
       state.user.name = payload.username
     },
+    changeFilterApply(state, payload) {
+      state.filter.apply = payload.filter.apply
+    }
   },
   actions: {
     changeUserid (context, payload) {
@@ -172,5 +130,8 @@ export const store = new Vuex.Store({
     changeUsername (context, payload) {
       context.commit('changeUsername',payload)
     },
+    changeFilterApply (context, payload) {
+      context.commit('changeFilterApply',payload)
+    }
   }
 });
